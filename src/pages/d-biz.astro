@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="D-Biz Programme" description="PEP is listed as an IT service provider (SP-417-885) under the Hong Kong Government's Distance Business Programme.">
+  <Header />
+
+  <div class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / D-Biz</p>
+      <h1>D-Biz 遙距營商計劃</h1>
+      <p class="hero-sub">O DIGITAL MARKETING is listed as an IT service provider under the Hong Kong Government's Distance Business Programme — Registration No. SP-417-885</p>
+    </div>
+  </div>
+
+  <section class="dbiz-section">
+    <div class="container dbiz-grid">
+      <div class="dbiz-content">
+        <p>香港特區政府在第二輪「防疫抗疫基金」下推出「遙距營商計劃 D-Biz」(Distance Business Programme)，推出為期六個月、為數五億元的「遙距營商計劃」(D-Biz)，透過特快批核，資助企業利用創新與科技，在疫情期間開拓遙距業務，創造新的價值、新的能力、新的機遇，轉危為機。</p>
+        <p>每個方案連同培訓開支的資助最多10萬元，而每間公司可獲最多30萬元總額資助，進行為期最長六個月的資助項目。</p>
+
+        <h2>我們的服務範圍</h2>
+
+        <div class="service-blocks">
+          <div class="service-block">
+            <h3>🛒 網上營商</h3>
+            <ul>
+              <li>為想建立網上、手機或其他線上服務平台的公司而設，以透過訂閱制或度身訂造的電子商貿平台作商品及服務推廣目的</li>
+              <li>包括開發及管理容許消費者通過互聯網下訂單</li>
+              <li>透過搜索引擎宣傳及數碼廣告來推廣此類網上服務平台，例如社交媒體宣傳、電子優惠券及會員計劃等</li>
+            </ul>
+          </div>
+
+          <div class="service-block">
+            <h3>📣 網上客戶服務和推廣</h3>
+            <ul>
+              <li>使公司能夠利用互聯網開通訂購服務，適用但不限於預訂和預約服務</li>
+              <li>技術方案亦可適用於遠程學習設施</li>
+              <li>透過搜索引擎宣傳及數碼廣告來推廣此類網上服務平台</li>
+            </ul>
+          </div>
+
+          <div class="service-block">
+            <h3>☁️ 遙距文件管理、雲端儲存及遠端存取服務</h3>
+            <ul>
+              <li>把打印文件數字化成為電子格式並存放於在雲端儲存系統</li>
+              <li>讓員工透過桌面遠端控制、VPN、虛擬桌面基礎結構(VDI)獲取公司信息、數據和系統</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dbiz-contact">
+          <h3>想了解更多？</h3>
+          <p>歡迎聯絡我們查詢計劃詳情及報價：</p>
+          <p><strong>Tel:</strong> <a href="tel:93835691">(852) 9383 5691</a></p>
+          <p><strong>Email:</strong> <a href="mailto:pepcorp1@gmail.com">pepcorp1@gmail.com</a></p>
+        </div>
+      </div>
+
+      <aside class="dbiz-sidebar">
+        <img src="/images/dbiz.png" alt="PEP D-Biz programme brochure" />
+      </aside>
+    </div>
+  </section>
+
+  <ContactForm />
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: var(--green-dark);
+    color: var(--white);
+    padding-block: 3.5rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .breadcrumb a { color: var(--gold); }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .page-hero h1 { color: var(--white); margin-bottom: 0.75rem; }
+  .hero-sub { color: rgba(255,255,255,.8); max-width: 640px; font-size: 0.95rem; }
+
+  .dbiz-section { padding-block: 5rem; }
+
+  .dbiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .dbiz-content > p { color: var(--text-light); margin-bottom: 1rem; }
+
+  .dbiz-content h2 {
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin: 2.5rem 0 1.5rem;
+  }
+
+  .service-blocks { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .service-block {
+    background: var(--bg-light);
+    border-left: 4px solid var(--green-dark);
+    padding: 1.5rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .service-block h3 { font-size: 1rem; color: var(--green-dark); margin-bottom: 0.75rem; }
+
+  .service-block ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .service-block li { font-size: 0.9rem; color: var(--text-light); }
+
+  .dbiz-contact {
+    margin-top: 2.5rem;
+    background: #edf5ef;
+    border: 1px solid #c3dcc8;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .dbiz-contact h3 { color: var(--green-dark); margin-bottom: 0.5rem; }
+  .dbiz-contact p { font-size: 0.95rem; color: var(--text-light); margin-top: 0.4rem; }
+  .dbiz-contact a { color: var(--green-dark); font-weight: 600; }
+  .dbiz-contact a:hover { text-decoration: underline; }
+
+  .dbiz-sidebar img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 90px;
+  }
+
+  @media (max-width: 900px) {
+    .dbiz-grid { grid-template-columns: 1fr; }
+    .dbiz-sidebar { order: -1; max-width: 400px; }
+  }
+</style>

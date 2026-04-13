@@ -1,0 +1,101 @@
+---
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/images/logo.png" alt="PEP logo" width="56" />
+      <p class="footer-tagline">Professional · Eager · Passionate</p>
+      <p class="footer-copy">© 2024 PEP IT Consulting & Services. All rights reserved.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services/system-management">System Management</a></li>
+        <li><a href="/services/network-solutions">Network Solutions</a></li>
+        <li><a href="/services/web-solutions">Web Solutions</a></li>
+        <li><a href="/services/technical-support">Technical Support</a></li>
+        <li><a href="/services/anti-money-laundering">Anti-Money Laundering</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/d-biz">D-Biz Programme</a></li>
+        <li><a href="/#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <address>
+        <p>Flat 2A, Canton Road 1186<br/>MongKok, Hong Kong</p>
+        <p><a href="tel:93835691">Tel. 9383 5691</a></p>
+        <p><a href="mailto:info@pep.com.hk">info@pep.com.hk</a></p>
+      </address>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--green-dark);
+    color: rgba(255,255,255,.85);
+    padding-block: 3.5rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 2.5rem;
+  }
+
+  .footer-brand img { margin-bottom: 0.75rem; filter: brightness(0) invert(1); opacity: 0.9; }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,.5); }
+
+  h4 {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  ul a, address a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,.75);
+    transition: color var(--transition);
+  }
+
+  ul a:hover, address a:hover { color: var(--white); }
+
+  address {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,.75);
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

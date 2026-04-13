@@ -1,0 +1,256 @@
+---
+const navLinks = [
+  { label: 'Home',       href: '/' },
+  { label: 'D-Biz',      href: '/d-biz' },
+  { label: 'About Us',   href: '/about' },
+  {
+    label: 'Our Services',
+    href: '/services',
+    children: [
+      { label: 'System Management',    href: '/services/system-management' },
+      { label: 'Network Solutions',    href: '/services/network-solutions' },
+      { label: 'Web Solutions',        href: '/services/web-solutions' },
+      { label: 'Technical Support',    href: '/services/technical-support' },
+      { label: 'Anti-Money Laundering',href: '/services/anti-money-laundering' },
+    ],
+  },
+  { label: 'Contact Us', href: '/#contact' },
+];
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="PEP Home">
+      <img src="/images/logo.png" alt="PEP logo" width="72" height="63" />
+      <span class="logo-text">
+        <strong>PEP</strong>
+        <small>Professional · Eager · Passionate</small>
+      </span>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Site">
+      <ul class="nav-list">
+        {navLinks.map(link => (
+          <li class={`nav-item${link.children ? ' has-dropdown' : ''}`}>
+            <a
+              href={link.href}
+              class={`nav-link${pathname === link.href || (link.children && link.children.some(c => c.href === pathname)) ? ' active' : ''}`}
+              aria-haspopup={link.children ? 'true' : undefined}
+            >
+              {link.label}
+              {link.children && <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>}
+            </a>
+            {link.children && (
+              <ul class="dropdown">
+                {link.children.map(child => (
+                  <li>
+                    <a href={child.href} class={pathname === child.href ? 'active' : ''}>
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid #e8ede9;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .logo img { width: 48px; height: auto; }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .logo-text strong {
+    font-size: 1.25rem;
+    color: var(--green-dark);
+    letter-spacing: 0.04em;
+  }
+
+  .logo-text small {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
+  }
+
+  /* Nav */
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .nav-item { position: relative; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--green-dark);
+    background: #edf5ef;
+  }
+
+  .nav-link svg { transition: transform var(--transition); }
+
+  /* Dropdown */
+  .has-dropdown:hover .nav-link svg { transform: rotate(180deg); }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 220px;
+    background: var(--white);
+    border: 1px solid #e0eae2;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    list-style: none;
+    overflow: hidden;
+    z-index: 200;
+  }
+
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown { display: block; }
+
+  .dropdown a {
+    display: block;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    transition: var(--transition);
+  }
+
+  .dropdown a:hover,
+  .dropdown a.active {
+    background: #edf5ef;
+    color: var(--green-dark);
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+
+  @media (max-width: 900px) {
+    .hamburger { display: flex; }
+
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid #e8ede9;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+    }
+
+    .site-nav.open { display: block; }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .nav-link { justify-content: space-between; }
+
+    .dropdown {
+      position: static;
+      box-shadow: none;
+      border: none;
+      border-left: 3px solid #e0eae2;
+      margin-left: 1rem;
+      border-radius: 0;
+    }
+
+    .has-dropdown:hover .dropdown { display: none; }
+    .has-dropdown.open .dropdown { display: block; }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('site-nav');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Toggle dropdowns on mobile tap
+  document.querySelectorAll('.has-dropdown .nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        link.closest('.has-dropdown')?.classList.toggle('open');
+      }
+    });
+  });
+</script>

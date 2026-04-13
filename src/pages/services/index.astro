@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const services = [
+  {
+    title: 'System Management',
+    href: '/services/system-management',
+    image: '/images/service-systems.jpg',
+    icon: '🖥️',
+    desc: 'Full IT asset management and software licensing for both simple and enterprise software development.',
+  },
+  {
+    title: 'Network Solutions',
+    href: '/services/network-solutions',
+    image: '/images/service-network.jpg',
+    icon: '🌐',
+    desc: 'Planning and installation of structured cables, servers, server operating systems, and directory plans.',
+  },
+  {
+    title: 'Web Solutions',
+    href: '/services/web-solutions',
+    image: '/images/service-web.jpg',
+    icon: '💻',
+    desc: 'Professional website development, hosting, e-mail services, and SEO to grow your online presence.',
+  },
+  {
+    title: 'Technical Support',
+    href: '/services/technical-support',
+    image: '/images/service-tech.jpg',
+    icon: '🔧',
+    desc: 'Desktop and notebook support, VPN solutions, and IT outsourcing to boost operational efficiency.',
+  },
+  {
+    title: 'Anti-Money Laundering',
+    href: '/services/anti-money-laundering',
+    image: '/images/service-aml.jpg',
+    icon: '🛡️',
+    desc: 'Powerful AML API to automate compliance processes and reduce false positives for businesses.',
+  },
+];
+---
+
+<Layout title="Our Services" description="PEP offers system management, network solutions, web development, technical support, and AML services in Hong Kong.">
+  <Header />
+
+  <div class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / Our Services</p>
+      <h1>Our Services</h1>
+      <p class="hero-sub">Comprehensive IT solutions tailored for your business needs.</p>
+    </div>
+  </div>
+
+  <section class="services-list">
+    <div class="container">
+      {services.map((s, i) => (
+        <div class={`service-row ${i % 2 === 1 ? 'service-row--reverse' : ''}`}>
+          <div class="service-row__image">
+            <img src={s.image} alt={s.title} />
+          </div>
+          <div class="service-row__content">
+            <div class="service-row__icon">{s.icon}</div>
+            <h2>{s.title}</h2>
+            <p>{s.desc}</p>
+            <a href={s.href} class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <ContactForm />
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: var(--green-dark);
+    color: var(--white);
+    padding-block: 3.5rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .breadcrumb a { color: var(--gold); }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .page-hero h1 { color: var(--white); margin-bottom: 0.5rem; }
+  .hero-sub { color: rgba(255,255,255,.75); }
+
+  .services-list { padding-block: 4rem; }
+  .services-list .container { display: flex; flex-direction: column; gap: 5rem; }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .service-row--reverse { direction: rtl; }
+  .service-row--reverse > * { direction: ltr; }
+
+  .service-row__image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .service-row__icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+  .service-row__content h2 { color: var(--green-dark); margin-bottom: 1rem; }
+  .service-row__content p { color: var(--text-light); margin-bottom: 1.5rem; }
+
+  @media (max-width: 768px) {
+    .service-row { grid-template-columns: 1fr; direction: ltr; }
+    .service-row__image { order: -1; }
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="About Us" description="Since 1997, PEP has been developing business systems for education, medicine and commerce in Hong Kong.">
+  <Header />
+
+  <div class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / About Us</p>
+      <h1>Why Choose PEP?</h1>
+    </div>
+  </div>
+
+  <section class="about-section">
+    <div class="container about-grid">
+      <div class="about-content">
+        <h2>About Us</h2>
+        <p>Since 1997 PEP has been developing business systems to enhance operations of different industries including education, medicine and commerce.</p>
+        <p>We provide an open resource and user-friendly relational database with web, apps and window platform. Apart from R&amp;D, we also provide a series of application software products, technical supports, data-integrations, trainings, as well as customisations.</p>
+
+        <div class="values-grid">
+          {['Reliability','Sincerity','Integrity','Consistency','Commitment','Competence'].map(v => (
+            <div class="value-chip">{v}</div>
+          ))}
+        </div>
+
+        <a href="/#contact" class="btn btn-primary" style="margin-top:2rem">Get In Touch</a>
+      </div>
+
+      <div class="about-image">
+        <img src="/images/about.jpg" alt="PEP team at work" />
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container stats-grid">
+      {[
+        { stat: '1997', label: 'Founded' },
+        { stat: '25+', label: 'Years Experience' },
+        { stat: '3', label: 'Industry Sectors' },
+        { stat: '5+', label: 'Core Services' },
+      ].map(item => (
+        <div class="stat-card">
+          <div class="stat-number">{item.stat}</div>
+          <div class="stat-label">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <ContactForm />
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: var(--green-dark);
+    color: var(--white);
+    padding-block: 3.5rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .breadcrumb a { color: var(--gold); }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .page-hero h1 { color: var(--white); }
+
+  .about-section { padding-block: 5rem; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-content h2 { color: var(--green-dark); margin-bottom: 1rem; }
+  .about-content p { color: var(--text-light); margin-bottom: 1rem; }
+
+  .values-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .value-chip {
+    background: #edf5ef;
+    color: var(--green-dark);
+    border: 1px solid #c3dcc8;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .about-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .stats-section { background: var(--bg-light); padding-block: 4rem; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-card {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label { font-size: 0.9rem; color: var(--text-light); }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-image { order: -1; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
